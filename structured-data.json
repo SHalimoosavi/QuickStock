@@ -1,0 +1,29 @@
+{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SAYANJALI NEXUS PRIVATE LIMITED",
+    "url": "https://github.com/SHalimoosavi",
+    "founder": { "@type": "Person", "name": "Syed Ali Hasan Moosavi" },
+    "sameAs": ["https://github.com/SHalimoosavi"]
+  },
+  "softwareApplication": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QuickStock Sync",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Inventory Management Software",
+    "operatingSystem": "Any (Node.js 18+ runtime)",
+    "softwareVersion": "2.0.0",
+    "description": "A free, open-source, offline-first inventory management platform for warehouses, retail stores, and small businesses.",
+    "url": "https://shalimoosavi.github.io/QuickStock/",
+    "downloadUrl": "https://github.com/SHalimoosavi/SYJ-QuickStock-Sync",
+    "codeRepository": "https://github.com/SHalimoosavi/SYJ-QuickStock-Sync",
+    "license": "https://opensource.org/licenses/MIT",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Syed Ali Hasan Moosavi" },
+    "publisher": { "@type": "Organization", "name": "SAYANJALI NEXUS PRIVATE LIMITED" }
+  },
+  "note": "These schemas are also embedded directly in index.html as separate <script type=\"application/ld+json\"> blocks (Organization, SoftwareApplication, WebSite+SearchAction, BreadcrumbList, FAQPage) — this file exists as a human-readable reference copy, not a file search engines fetch directly."
+}

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuickStock Sync — Offline-First Inventory Management, Open Source</title>
+<meta name="description" content="Free, open-source, offline-first inventory software for warehouses &amp; small businesses. Barcode scanning, multi-location stock, LAN/cloud sync. MIT licensed." />
+<meta name="keywords" content="inventory management software, open source inventory system, offline inventory app, warehouse management software, barcode scanning inventory, QR code inventory labels, self-hosted inventory software, free inventory management, small business inventory app, multi-location inventory, purchase order software, stock management PWA, Node.js inventory app" />
+<meta name="author" content="Syed Ali Hasan Moosavi" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://shalimoosavi.github.io/QuickStock/" />
+
+<!-- Icons / Manifest -->
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="icons/favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#0B0D08" />
+<meta name="msapplication-TileColor" content="#0B0D08" />
+<meta name="msapplication-config" content="/browserconfig.xml" />
+
+<!-- Language / Geo -->
+<meta name="language" content="English" />
+<meta name="geo.region" content="IN" />
+<meta name="distribution" content="global" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="QuickStock Sync" />
+<meta property="og:title" content="QuickStock Sync — Offline-First Inventory Management, Open Source" />
+<meta property="og:description" content="Free, open-source, offline-first inventory management for warehouses and small businesses. Barcode scanning, multi-location stock, purchase orders, LAN/cloud sync, installable PWA. Self-hosted, MIT licensed." />
+<meta property="og:url" content="https://shalimoosavi.github.io/QuickStock/" />
+<meta property="og:image" content="https://shalimoosavi.github.io/QuickStock/icons/og-banner.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="QuickStock Sync — Offline-First Inventory Management, Open Source" />
+<meta name="twitter:description" content="Free, open-source, offline-first inventory management for warehouses and small businesses. Barcode scanning, multi-location stock, LAN/cloud sync, installable PWA." />
+<meta name="twitter:image" content="https://shalimoosavi.github.io/QuickStock/icons/og-banner.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SAYANJALI NEXUS PRIVATE LIMITED",
+  "url": "https://github.com/SHalimoosavi",
+  "founder": {
+    "@type": "Person",
+    "name": "Syed Ali Hasan Moosavi"
+  },
+  "sameAs": [
+    "https://github.com/SHalimoosavi"
+  ]
+}
+</script>
+
+<!-- JSON-LD: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QuickStock Sync",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Inventory Management Software",
+  "operatingSystem": "Any (Node.js 18+ runtime; Windows, macOS, Linux, Android via Termux)",
+  "softwareVersion": "2.0.0",
+  "description": "A free, open-source, offline-first inventory management platform for warehouses, retail stores, and small businesses. Includes barcode and QR scanning, multi-location stock tracking, purchase orders, CSV/Excel import and export, LAN and cloud sync, and an installable Progressive Web App.",
+  "url": "https://shalimoosavi.github.io/QuickStock/",
+  "downloadUrl": "https://github.com/SHalimoosavi/SYJ-QuickStock-Sync",
+  "codeRepository": "https://github.com/SHalimoosavi/SYJ-QuickStock-Sync",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Syed Ali Hasan Moosavi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SAYANJALI NEXUS PRIVATE LIMITED"
+  }
+}
+</script>
+
+<!-- JSON-LD: WebSite + SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "QuickStock Sync",
+  "url": "https://shalimoosavi.github.io/QuickStock/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://github.com/search?q={search_term_string}+repo:SHalimoosavi/SYJ-QuickStock-Sync",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shalimoosavi.github.io/QuickStock/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="QuickStock Sync home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">QuickStock<span class="brand-accent">Sync</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#preview">Preview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#faq">FAQ</a>
+      <a href="#docs">Docs</a>
+      <a href="#projects">Other projects</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost header-star" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a7.75 7.75 0 0 0-2.45 15.1c.39.07.53-.17.53-.38l-.01-1.34c-2.16.47-2.61-1.03-2.61-1.03-.35-.9-.86-1.14-.86-1.14-.7-.48.05-.47.05-.47.78.05 1.19.8 1.19.8.69 1.19 1.81.85 2.25.65.07-.5.27-.85.49-1.05-1.72-.2-3.53-.86-3.53-3.83 0-.85.3-1.53.8-2.08-.08-.2-.35-1 .08-2.1 0 0 .65-.21 2.14.79a7.4 7.4 0 0 1 3.9 0c1.48-1 2.13-.79 2.13-.79.43 1.1.16 1.9.08 2.1.5.55.8 1.23.8 2.08 0 2.98-1.82 3.63-3.55 3.82.28.24.53.71.53 1.44l-.01 2.13c0 .21.14.46.54.38A7.75 7.75 0 0 0 8 .25Z"/></svg>
+        <span>Star on GitHub</span>
+        <span class="star-count" id="star-count" aria-live="polite">★</span>
+      </a>
+      <a class="btn btn-primary header-try" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync#-quick-start" target="_blank" rel="noopener">Get started</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#features">Features</a>
+    <a href="#preview">Preview</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#faq">FAQ</a>
+    <a href="#docs">Docs</a>
+    <a href="#projects">Other projects</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-primary mobile-cta" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">View on GitHub</a>
+  </div>
+</header>
+
+<main id="main-content">
+<div id="top"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Open source · MIT licensed · Self-hosted
+      </p>
+      <h1 id="hero-heading" class="reveal">
+        Inventory software that works<br />
+        <span class="text-gradient">whether or not the internet does.</span>
+      </h1>
+      <p class="hero-sub reveal">
+        QuickStock Sync is a free, open-source inventory platform for warehouses, retail stores, and small
+        vendors. Scan barcodes, track stock across locations, run purchase orders, and keep working
+        offline — then sync when you're back online, over your LAN or the internet. No subscription.
+        No vendor lock-in. Your data stays on your machine.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary btn-lg" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a7.75 7.75 0 0 0-2.45 15.1c.39.07.53-.17.53-.38l-.01-1.34c-2.16.47-2.61-1.03-2.61-1.03-.35-.9-.86-1.14-.86-1.14-.7-.48.05-.47.05-.47.78.05 1.19.8 1.19.8.69 1.19 1.81.85 2.25.65.07-.5.27-.85.49-1.05-1.72-.2-3.53-.86-3.53-3.83 0-.85.3-1.53.8-2.08-.08-.2-.35-1 .08-2.1 0 0 .65-.21 2.14.79a7.4 7.4 0 0 1 3.9 0c1.48-1 2.13-.79 2.13-.79.43 1.1.16 1.9.08 2.1.5.55.8 1.23.8 2.08 0 2.98-1.82 3.63-3.55 3.82.28.24.53.71.53 1.44l-.01 2.13c0 .21.14.46.54.38A7.75 7.75 0 0 0 8 .25Z"/></svg>
+          View on GitHub
+        </a>
+        <a class="btn btn-outline btn-lg" href="#docs">
+          Read the docs
+        </a>
+      </div>
+      <div class="hero-meta reveal">
+        <code>git clone https://github.com/SHalimoosavi/SYJ-QuickStock-Sync.git &amp;&amp; npm install &amp;&amp; npm start</code>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <div class="ledger-panel">
+        <div class="ledger-panel-head">
+          <span class="ledger-dot"></span>
+          <span class="ledger-title">Live inventory</span>
+          <span class="sync-pill"><span class="pulse"></span>Synced</span>
+        </div>
+        <ul class="ledger-rows" id="ledger-rows">
+          <li><span class="sku">SKU-1042</span><span class="name">Corrugated Boxes (M)</span><span class="qty" data-count="184">0</span></li>
+          <li><span class="sku">SKU-0871</span><span class="name">Packing Tape 48mm</span><span class="qty" data-count="62">0</span></li>
+          <li><span class="sku">SKU-2210</span><span class="name">Bubble Wrap Roll</span><span class="qty low" data-count="8">0</span></li>
+          <li><span class="sku">SKU-3305</span><span class="name">Shipping Labels</span><span class="qty" data-count="410">0</span></li>
+          <li><span class="sku">SKU-1198</span><span class="name">Pallet Wrap</span><span class="qty out" data-count="0">0</span></li>
+        </ul>
+        <div class="ledger-footer">
+          <span>3 locations</span>
+          <span class="divider">·</span>
+          <span>2 peers synced</span>
+        </div>
+      </div>
+      <div class="floating-chip chip-scan">📷 Scanned SKU-2210</div>
+      <div class="floating-chip chip-offline">⚠ Offline — queued 1 action</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT FOR ============ -->
+<section class="built-for" aria-label="Who QuickStock Sync is built for">
+  <div class="wrap">
+    <p class="built-for-label">Built for the people who actually count the stock</p>
+    <ul class="built-for-list">
+      <li>Warehouse teams</li>
+      <li>Retail stores</li>
+      <li>Small &amp; growing businesses</li>
+      <li>Distributors</li>
+      <li>Independent vendors</li>
+      <li>Inventory managers</li>
+      <li>Open source developers</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROBLEMS ============ -->
+<section class="section section-light" aria-labelledby="problems-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">The problem</p>
+      <h2 id="problems-heading" class="reveal">Spreadsheets don't scale. Cloud subscriptions don't ask permission.</h2>
+      <p class="section-sub reveal">Most small operations end up choosing between two bad options: a spreadsheet that silently drifts out of sync across three people's laptops, or a SaaS platform that charges per seat, per warehouse, and stops working the moment your internet does.</p>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <h3>Spreadsheet chaos</h3>
+        <p>Duplicate SKUs, stale copies emailed back and forth, and no record of who changed what or when.</p>
+      </div>
+      <div class="problem-card reveal">
+        <h3>Cloud dependency</h3>
+        <p>Lose your connection, lose your ability to make a sale. Warehouses and shop floors don't always have reliable Wi-Fi.</p>
+      </div>
+      <div class="problem-card reveal">
+        <h3>Expensive subscriptions</h3>
+        <p>Per-seat, per-location SaaS pricing that keeps climbing as you grow — for software running someone else's server.</p>
+      </div>
+      <div class="problem-card reveal">
+        <h3>Inventory mismatches</h3>
+        <p>Manual counts, manual entry, manual mistakes. Stock on the shelf never quite matches stock on the screen.</p>
+      </div>
+      <div class="problem-card reveal">
+        <h3>No audit trail</h3>
+        <p>When something doesn't add up, there's no history to check — just a number, and no way to know how it got there.</p>
+      </div>
+      <div class="problem-card reveal">
+        <h3>Vendor lock-in</h3>
+        <p>Your inventory data lives in someone else's database, in their export format, under their terms of service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section section-dark" id="features" aria-labelledby="features-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">Everything a warehouse actually needs</p>
+      <h2 id="features-heading" class="reveal">One app. No add-ons to buy later.</h2>
+      <p class="section-sub reveal">Every feature below ships in the same install — nothing is gated behind a paid tier, because there isn't one.</p>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-card reveal">
+        <div class="feature-icon">📴</div>
+        <h3>Offline-first &amp; installable</h3>
+        <p>Runs entirely on your own machine. Install it as a PWA on desktop or mobile; the app shell loads instantly and keeps working through a dropped connection.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">📷</div>
+        <h3>Barcode &amp; QR scanning</h3>
+        <p>Camera-based scanning with a manual-entry fallback that also works with any USB or Bluetooth barcode scanner. Generate and bulk-print QR labels for anything you don't already have a barcode for.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">🏬</div>
+        <h3>Multi-location inventory</h3>
+        <p>Track stock per warehouse, store, or shelf. Transfer stock between locations with a full, undoable history — single-location use stays exactly as simple as it always was.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">🧾</div>
+        <h3>Suppliers &amp; purchase orders</h3>
+        <p>A real draft → ordered → received workflow. Receiving a purchase order restocks the right location automatically and logs it like any other restock.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">📊</div>
+        <h3>Import, export &amp; reports</h3>
+        <p>Bulk import or export via CSV or Excel with a dry-run preview before anything is written. Print-ready inventory, low-stock, and activity reports — no PDF library required.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">🔐</div>
+        <h3>Optional accounts &amp; roles</h3>
+        <p>Authentication is off by default. Turn it on when you need it, with two roles — staff and admin — so the front desk can record a sale without touching settings.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">🔄</div>
+        <h3>LAN &amp; cloud sync</h3>
+        <p>A sync peer is just a URL — a warehouse PC on your LAN or a remote instance work identically. Explicit, mutual pairing keeps you in control of who you sync with.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon">↺</div>
+        <h3>Full history &amp; undo</h3>
+        <p>Every sale, dispatch, restock, adjustment, and transfer is logged permanently, with a one-click undo for the most recent action — undo and redo chain correctly, every time.</p>
+      </article>
+    </div>
+
+    <ul class="feature-checklist reveal" aria-label="Additional features">
+      <li>Inventory dashboard</li>
+      <li>Product images</li>
+      <li>Dark mode</li>
+      <li>Configurable settings</li>
+      <li>Automatic backups</li>
+      <li>Offline write queue</li>
+      <li>Background sync</li>
+      <li>Fast search &amp; filtering</li>
+      <li>Rate limiting &amp; CSP hardening</li>
+      <li>Fully responsive design</li>
+      <li>GitHub Actions CI</li>
+      <li>100% open source, MIT licensed</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD PREVIEW ============ -->
+<section class="section section-light" id="preview" aria-labelledby="preview-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">See it in action</p>
+      <h2 id="preview-heading" class="reveal">A dashboard built for a warehouse floor, not a boardroom.</h2>
+      <p class="section-sub reveal">Large tap targets, a search bar that actually filters as you type, and status colors you can read from across the room.</p>
+    </div>
+
+    <div class="browser-frame reveal">
+      <div class="browser-chrome">
+        <span class="chrome-dot" style="--c:#ff5f57"></span>
+        <span class="chrome-dot" style="--c:#febc2e"></span>
+        <span class="chrome-dot" style="--c:#28c840"></span>
+        <span class="chrome-url">localhost:3000</span>
+      </div>
+      <div class="mock-dashboard">
+        <div class="mock-toolbar">
+          <span class="mock-title">QuickStock Sync</span>
+          <span class="mock-search">🔍 Search by name or SKU…</span>
+          <span class="mock-btn mock-btn-primary">+ Add product</span>
+        </div>
+        <div class="mock-stats">
+          <div class="mock-stat"><span class="mock-stat-label">Total SKUs</span><span class="mock-stat-value">128</span></div>
+          <div class="mock-stat good"><span class="mock-stat-label">In Stock</span><span class="mock-stat-value">104</span></div>
+          <div class="mock-stat warn"><span class="mock-stat-label">Low Stock</span><span class="mock-stat-value">17</span></div>
+          <div class="mock-stat bad"><span class="mock-stat-label">Out of Stock</span><span class="mock-stat-value">7</span></div>
+        </div>
+        <div class="mock-grid">
+          <div class="mock-card">
+            <div class="mock-card-top"><strong>Corrugated Boxes (M)</strong><span class="mock-pill good">In Stock</span></div>
+            <p class="mock-card-sku">SKU-1042 · Packaging</p>
+            <p class="mock-card-qty">184 <span>pcs</span></p>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-top"><strong>Bubble Wrap Roll</strong><span class="mock-pill warn">Low Stock</span></div>
+            <p class="mock-card-sku">SKU-2210 · Packaging</p>
+            <p class="mock-card-qty">8 <span>rolls</span></p>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-top"><strong>Pallet Wrap</strong><span class="mock-pill bad">Out of Stock</span></div>
+            <p class="mock-card-sku">SKU-1198 · Packaging</p>
+            <p class="mock-card-qty">0 <span>rolls</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="section section-dark" aria-labelledby="why-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">Why teams pick it</p>
+      <h2 id="why-heading" class="reveal">Ownership, not a lease.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <span class="why-num">01</span>
+        <h3>Your data, your disk</h3>
+        <p>Everything lives in local JSON files with atomic writes and automatic backups. No third party ever sees your stock levels or your customers' orders.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="why-num">02</span>
+        <h3>Zero vendor lock-in</h3>
+        <p>Plain JSON, CSV, and Excel — export everything at any time, in formats every spreadsheet tool already opens.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="why-num">03</span>
+        <h3>Fast because it's local</h3>
+        <p>No round trip to someone else's server for every click. The app responds as fast as your own machine does.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="why-num">04</span>
+        <h3>Deploys in one command</h3>
+        <p><code>npm install &amp;&amp; npm start</code>. No account creation, no billing page, no onboarding call.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="why-num">05</span>
+        <h3>Secure by default</h3>
+        <p>Helmet security headers, rate limiting, strict input validation, and path-traversal protection are on from the first run.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="why-num">06</span>
+        <h3>Grows with you</h3>
+        <p>Start with one location and no login. Add warehouses, staff accounts, and synced peers exactly when you actually need them — never before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section class="section section-light" id="architecture" aria-labelledby="architecture-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">Under the hood</p>
+      <h2 id="architecture-heading" class="reveal">Technical architecture</h2>
+      <p class="section-sub reveal">Deliberately small and dependency-light — easy to read, easy to audit, easy to run anywhere Node.js runs.</p>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-card reveal">
+        <h3>Backend</h3>
+        <p>Node.js + Express. REST API, atomic JSON storage, Helmet, rate limiting.</p>
+      </div>
+      <div class="arch-card reveal">
+        <h3>Frontend</h3>
+        <p>Vanilla HTML, CSS, and JavaScript — no framework, no build step, no bundler.</p>
+      </div>
+      <div class="arch-card reveal">
+        <h3>Storage</h3>
+        <p>Local JSON files with atomic writes, automatic timestamped backups, and corrupt-file recovery.</p>
+      </div>
+      <div class="arch-card reveal">
+        <h3>Offline layer</h3>
+        <p>Service worker, Cache API, and IndexedDB for an installable Progressive Web App with a real offline write queue.</p>
+      </div>
+      <div class="arch-card reveal">
+        <h3>Sync protocol</h3>
+        <p>Peer-to-peer HTTP with shared-secret pairing and last-write-wins conflict resolution — works over LAN or the internet identically.</p>
+      </div>
+      <div class="arch-card reveal">
+        <h3>CI/CD</h3>
+        <p>GitHub Actions runs install, syntax, and boot checks on every push, across Node 18, 20, and 22.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section section-dark" id="timeline" aria-labelledby="timeline-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">Evolution</p>
+      <h2 id="timeline-heading" class="reveal">Built version by version, in the open</h2>
+      <p class="section-sub reveal">Every release is a real, working milestone — nothing here is a roadmap promise.</p>
+    </div>
+
+    <ol class="timeline reveal">
+      <li>
+        <span class="timeline-v">v1.0</span>
+        <div class="timeline-body">
+          <h3>Core inventory engine</h3>
+          <p>Dashboard, SKU CRUD, sale/dispatch/restock/adjustment, permanent history, shareable summaries.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v1.1</span>
+        <div class="timeline-body">
+          <h3>Settings</h3>
+          <p>Configurable port, data/backup directories, automatic backups, low-stock defaults.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v1.2</span>
+        <div class="timeline-body">
+          <h3>Import, export &amp; reports</h3>
+          <p>CSV/Excel bulk import with dry-run preview, and print-ready reports.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v1.3</span>
+        <div class="timeline-body">
+          <h3>Scanning &amp; labels</h3>
+          <p>Camera barcode/QR scanning, QR label generation, bulk printing, product images.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v1.4</span>
+        <div class="timeline-body">
+          <h3>Multi-location &amp; purchasing</h3>
+          <p>Locations, stock transfers, suppliers, and a full purchase-order workflow.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v1.5</span>
+        <div class="timeline-body">
+          <h3>Offline-first PWA</h3>
+          <p>Installable app shell, offline write queue, and background sync.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-v">v2.0</span>
+        <div class="timeline-body">
+          <h3>Accounts &amp; sync</h3>
+          <p>Optional authentication with staff/admin roles, plus LAN and cloud peer sync.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="section section-light" id="comparison" aria-labelledby="comparison-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">How it compares</p>
+      <h2 id="comparison-heading" class="reveal">Spreadsheets, cloud software, or QuickStock Sync</h2>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col">Spreadsheets</th>
+            <th scope="col">Cloud inventory SaaS</th>
+            <th scope="col" class="highlight-col">QuickStock Sync</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Works fully offline</th><td class="no">No</td><td class="no">No</td><td class="yes highlight-col">Yes</td></tr>
+          <tr><th scope="row">Monthly cost</th><td class="yes">Free</td><td class="no">Per seat / location</td><td class="yes highlight-col">Free forever</td></tr>
+          <tr><th scope="row">Data ownership</th><td class="warn">Local file, no audit trail</td><td class="no">Vendor's servers</td><td class="yes highlight-col">Your machine, full history</td></tr>
+          <tr><th scope="row">Barcode / QR scanning</th><td class="no">No</td><td class="warn">Sometimes, extra cost</td><td class="yes highlight-col">Built in</td></tr>
+          <tr><th scope="row">Multi-location stock</th><td class="warn">Manual, error-prone</td><td class="yes">Yes</td><td class="yes highlight-col">Yes</td></tr>
+          <tr><th scope="row">Purchase orders</th><td class="no">No</td><td class="yes">Yes</td><td class="yes highlight-col">Yes</td></tr>
+          <tr><th scope="row">Open source / auditable</th><td class="no">No</td><td class="no">No</td><td class="yes highlight-col">MIT licensed</td></tr>
+          <tr><th scope="row">Self-hosted</th><td class="yes">Yes</td><td class="no">No</td><td class="yes highlight-col">Yes</td></tr>
+          <tr><th scope="row">Installable app (PWA)</th><td class="no">No</td><td class="warn">Sometimes</td><td class="yes highlight-col">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREENSHOTS ============ -->
+<section class="section section-dark" aria-labelledby="screens-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">Every screen</p>
+      <h2 id="screens-heading" class="reveal">Looks right on the desk and in your pocket</h2>
+      <p class="section-sub reveal">Fully responsive, with a light and dark mode that both meet the same accessibility bar.</p>
+    </div>
+
+    <div class="device-gallery">
+      <div class="device device-laptop reveal">
+        <div class="device-screen theme-light">
+          <div class="mini-topbar"><span></span><span></span><span></span></div>
+          <div class="mini-cards">
+            <div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div>
+          </div>
+        </div>
+        <p class="device-label">Desktop · Light mode</p>
+      </div>
+      <div class="device device-laptop reveal">
+        <div class="device-screen theme-dark">
+          <div class="mini-topbar"><span></span><span></span><span></span></div>
+          <div class="mini-cards">
+            <div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div>
+          </div>
+        </div>
+        <p class="device-label">Desktop · Dark mode</p>
+      </div>
+      <div class="device device-tablet reveal">
+        <div class="device-screen theme-light">
+          <div class="mini-topbar"><span></span><span></span></div>
+          <div class="mini-cards mini-cards-2col">
+            <div class="mini-card"></div><div class="mini-card"></div>
+          </div>
+        </div>
+        <p class="device-label">Tablet</p>
+      </div>
+      <div class="device device-mobile reveal">
+        <div class="device-screen theme-dark">
+          <div class="mini-topbar"><span></span></div>
+          <div class="mini-cards mini-cards-1col">
+            <div class="mini-card"></div>
+          </div>
+        </div>
+        <p class="device-label">Mobile</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-light" id="faq" aria-labelledby="faq-heading">
+  <div class="wrap wrap-narrow">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">Questions</p>
+      <h2 id="faq-heading" class="reveal">Frequently asked questions</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary>What is QuickStock Sync?</summary>
+        <div class="faq-a"><p>QuickStock Sync is a free, open-source, offline-first inventory management platform for warehouses, retail stores, and small businesses. It runs on your own machine using Node.js and Express, stores data in local JSON files, and includes barcode/QR scanning, multi-location stock tracking, purchase orders, CSV/Excel import and export, and optional LAN or cloud sync between instances.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Is QuickStock Sync open source?</summary>
+        <div class="faq-a"><p>Yes. QuickStock Sync is released under the MIT License. The full source code is available on GitHub at <a href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">github.com/SHalimoosavi/SYJ-QuickStock-Sync</a>.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Is QuickStock Sync free to use?</summary>
+        <div class="faq-a"><p>Yes, completely. There is no subscription, no paid tier, and no feature paywall. You install it yourself and run it on your own hardware.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can QuickStock Sync work offline?</summary>
+        <div class="faq-a"><p>Yes. QuickStock Sync is offline-first by design. It's installable as a Progressive Web App, caches its own interface for instant loading, and queues stock operations (sale, dispatch, restock, adjustment, transfer) made while offline — automatically syncing them once the connection returns.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support barcode scanning?</summary>
+        <div class="faq-a"><p>Yes. QuickStock Sync uses the browser's built-in camera-based barcode/QR scanner, with a manual-entry fallback that also works with any USB or Bluetooth barcode scanner, since those act like a keyboard.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support QR code labels?</summary>
+        <div class="faq-a"><p>Yes. Every product can generate a printable QR label, individually or in bulk for a whole filtered view or a selected group of products — ready for label paper.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support CSV import and export?</summary>
+        <div class="faq-a"><p>Yes. You can bulk import products from a CSV file, with a dry-run preview showing exactly what will change before anything is written, and export your full inventory to CSV at any time.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support Excel import and export?</summary>
+        <div class="faq-a"><p>Yes. Excel (.xlsx) import and export work the same way as CSV, using the same dry-run preview before any bulk import is applied.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support multiple warehouses or locations?</summary>
+        <div class="faq-a"><p>Yes. Stock is tracked per location. You can add as many locations as you need and transfer stock between them, with a full, undoable history for every transfer. Single-location use is unaffected — the location picker only appears once you actually add a second one.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support suppliers?</summary>
+        <div class="faq-a"><p>Yes. You can manage a list of suppliers and link purchase orders to them.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support purchase orders?</summary>
+        <div class="faq-a"><p>Yes. Purchase orders follow a full draft → ordered → partially received → received (or cancelled) workflow. Receiving items restocks the correct location automatically and logs it in the same activity history as a manual restock.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support user authentication?</summary>
+        <div class="faq-a"><p>Yes, and it's optional. Authentication is off by default so a single user can start immediately with no login. When you're ready, you can enable it and create accounts with one of two roles: staff (record stock operations) or admin (full access, including settings and user management).</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support LAN synchronization?</summary>
+        <div class="faq-a"><p>Yes. Two QuickStock Sync instances on the same local network can sync inventory, history, locations, and suppliers with each other using an explicit, secret-paired connection.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support cloud synchronization?</summary>
+        <div class="faq-a"><p>Yes — LAN sync and cloud sync are the same feature. A sync peer is just a URL, so pointing at a remote or cloud-hosted instance works identically to pointing at a machine on your local network.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Is QuickStock Sync a Progressive Web App?</summary>
+        <div class="faq-a"><p>Yes. It has a web app manifest, a full icon set, and a service worker, so it can be installed to a desktop or phone home screen and launched like a native app.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What technology is QuickStock Sync built with?</summary>
+        <div class="faq-a"><p>The backend is Node.js and Express. The frontend is vanilla HTML, CSS, and JavaScript — no framework, no build step. Data is stored in local JSON files with atomic writes and automatic backups.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it require a database like MySQL or MongoDB?</summary>
+        <div class="faq-a"><p>No. QuickStock Sync stores everything in local JSON files with atomic writes, automatic timestamped backups, and recovery from corrupted files — no separate database server to install or manage.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I self-host QuickStock Sync?</summary>
+        <div class="faq-a"><p>Yes — self-hosting is the only way it runs. Clone the repository, run <code>npm install</code> and <code>npm start</code>, and it's live on your own machine or server.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Who is QuickStock Sync for?</summary>
+        <div class="faq-a"><p>Warehouse teams, retail stores, distributors, independent vendors, and any small or growing business that needs real inventory control without paying for enterprise software.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support dark mode?</summary>
+        <div class="faq-a"><p>Yes, with a per-browser toggle and a configurable default theme in Settings.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it support undo?</summary>
+        <div class="faq-a"><p>Yes. The most recent stock action can be undone with one click, and undo/redo chains correctly even across a stock transfer between locations.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I install QuickStock Sync?</summary>
+        <div class="faq-a"><p>Requires Node.js 18 or later. Run:</p><pre><code>git clone https://github.com/SHalimoosavi/SYJ-QuickStock-Sync.git
+cd SYJ-QuickStock-Sync
+npm install
+npm start</code></pre><p>The server starts on <code>http://localhost:3000</code> by default.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What license is QuickStock Sync released under?</summary>
+        <div class="faq-a"><p>The MIT License — free to use, modify, and self-host, including for commercial purposes.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Who created QuickStock Sync?</summary>
+        <div class="faq-a"><p>QuickStock Sync was built by Syed Ali Hasan Moosavi, Founder &amp; Managing Director of SAYANJALI NEXUS PRIVATE LIMITED, an AI engineer and full-stack developer building open-source developer tools and automation platforms.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does QuickStock Sync send my data anywhere?</summary>
+        <div class="faq-a"><p>No, not unless you explicitly configure a sync peer yourself. By default, all data stays in local JSON files on the machine running the app — there's no telemetry and no external service it talks to on its own.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOCS ============ -->
+<section class="section section-dark" id="docs" aria-labelledby="docs-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">Get running in under a minute</p>
+      <h2 id="docs-heading" class="reveal">Documentation</h2>
+    </div>
+
+    <div class="docs-grid">
+      <div class="docs-card reveal">
+        <h3>Requirements</h3>
+        <ul class="docs-list">
+          <li>Node.js 18 or later</li>
+          <li>Windows, macOS, or Linux</li>
+          <li>No database server required</li>
+        </ul>
+      </div>
+      <div class="docs-card docs-card-wide reveal">
+        <h3>Run locally</h3>
+        <pre class="code-block"><code>git clone https://github.com/SHalimoosavi/SYJ-QuickStock-Sync.git
+cd SYJ-QuickStock-Sync
+npm install
+npm start</code></pre>
+        <p class="docs-note">The server starts on <code>http://localhost:3000</code> by default — configurable in Settings once it's running.</p>
+      </div>
+      <div class="docs-card reveal">
+        <h3>License</h3>
+        <p>MIT — free for personal and commercial use.</p>
+      </div>
+      <div class="docs-card reveal">
+        <h3>Roadmap</h3>
+        <p>v1.1 through v2.0 are shipped and documented in the repository's changelog.</p>
+      </div>
+      <div class="docs-card reveal">
+        <h3>Contributing</h3>
+        <p>Issues and pull requests are welcome on GitHub — keep changes focused and documented.</p>
+      </div>
+    </div>
+
+    <div class="docs-cta reveal">
+      <a class="btn btn-primary btn-lg" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">Read the full README on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT DEVELOPER ============ -->
+<section class="section section-light" id="about" aria-labelledby="about-heading">
+  <div class="wrap wrap-narrow">
+    <div class="founder-card reveal">
+      <div class="founder-avatar" aria-hidden="true">SA</div>
+      <div class="founder-copy">
+        <p class="eyebrow eyebrow-dark">About the developer</p>
+        <h2 id="about-heading">Syed Ali Hasan Moosavi</h2>
+        <p class="founder-role">Founder &amp; Managing Director, SAYANJALI NEXUS PRIVATE LIMITED</p>
+        <p class="founder-tags">AI Engineer · Open Source Developer · Full Stack Developer · Automation Engineer</p>
+        <p class="founder-bio">Focused on building production-grade AI systems, developer tools, automation platforms, and open-source software that solve real-world business problems — QuickStock Sync included.</p>
+        <div class="founder-links">
+          <a class="btn btn-outline" href="https://github.com/SHalimoosavi" target="_blank" rel="noopener">GitHub Profile</a>
+          <a class="btn btn-ghost" href="mailto:shalimoosavi@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER PROJECTS ============ -->
+<section class="section section-dark" id="projects" aria-labelledby="projects-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">From the same workshop</p>
+      <h2 id="projects-heading" class="reveal">Other open source projects</h2>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ NexusIntel AI</h3>
+        <p>An AI-driven intelligence and analytics platform for surfacing insight from large, unstructured data sets.</p>
+        <p class="project-tech">AI / Data Platform</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SAYANJALI OSINT</h3>
+        <p>An open-source intelligence (OSINT) toolkit for gathering and correlating publicly available information.</p>
+        <p class="project-tech">OSINT / Research Tooling</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ Scholar AI</h3>
+        <p>An AI research and education assistant built to help learners and researchers work through academic material faster.</p>
+        <p class="project-tech">AI / Education</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ Logistics Fabric</h3>
+        <p>A logistics and supply-chain coordination platform for tracking shipments and warehouse operations end to end.</p>
+        <p class="project-tech">Logistics / Supply Chain</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ GridSync OS</h3>
+        <p>An infrastructure synchronization layer for keeping distributed systems and edge devices consistent.</p>
+        <p class="project-tech">Infrastructure / Sync</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ OpenTrade Logic</h3>
+        <p>A rules and logic engine for building and testing automated trading strategies.</p>
+        <p class="project-tech">Fintech / Automation</p>
+      </article>
+      <article class="project-card reveal">
+        <span class="badge-oss">Open Source</span>
+        <h3>SYJ MeshChat</h3>
+        <p>A decentralized, mesh-networked chat platform designed to keep working without central servers.</p>
+        <p class="project-tech">Decentralized / Networking</p>
+      </article>
+      <article class="project-card reveal project-card-active">
+        <span class="badge-oss badge-current">You are here</span>
+        <h3>QuickStock Sync</h3>
+        <p>Offline-first inventory management for warehouses and small businesses. The project on this page.</p>
+        <p class="project-tech">Node.js / Express / PWA</p>
+      </article>
+    </div>
+    <p class="projects-note reveal">GitHub links for these projects are added as each repository is published — start with <a href="https://github.com/SHalimoosavi" target="_blank" rel="noopener">github.com/SHalimoosavi</a> for the latest.</p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" aria-labelledby="cta-heading">
+  <div class="wrap">
+    <h2 id="cta-heading" class="reveal">Stop paying rent on your own inventory data.</h2>
+    <p class="reveal">Clone it, run it, own it. Star the repo if it's useful to you.</p>
+    <div class="hero-actions reveal" style="justify-content:center;">
+      <a class="btn btn-primary btn-lg" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">⭐ Star on GitHub</a>
+      <a class="btn btn-outline btn-lg" href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync/archive/refs/heads/main.zip">⬇ Download ZIP</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section-light" id="contact" aria-labelledby="contact-heading">
+  <div class="wrap wrap-narrow">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark reveal">Get in touch</p>
+      <h2 id="contact-heading" class="reveal">Contact</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <a class="contact-card" href="mailto:shalimoosavi@gmail.com">
+        <span class="contact-icon" aria-hidden="true">✉️</span>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">shalimoosavi@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://wa.me/918008123605" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">💬</span>
+        <span class="contact-label">WhatsApp</span>
+        <span class="contact-value">+91 80081 23605</span>
+      </a>
+      <a class="contact-card" href="https://github.com/SHalimoosavi" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">🐙</span>
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@SHalimoosavi</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">QuickStock<span class="brand-accent">Sync</span></span>
+      <p>Offline-first inventory management. Open source, MIT licensed.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Project</h4>
+      <a href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync" target="_blank" rel="noopener">GitHub Repository</a>
+      <a href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync#readme" target="_blank" rel="noopener">Documentation</a>
+      <a href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a href="https://github.com/SHalimoosavi/SYJ-QuickStock-Sync/issues" target="_blank" rel="noopener">Report an issue</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Site</h4>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="sitemap.xml">Sitemap</a>
+      <a href="robots.txt">Robots</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:shalimoosavi@gmail.com">shalimoosavi@gmail.com</a>
+      <a href="https://wa.me/918008123605" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://github.com/SHalimoosavi" target="_blank" rel="noopener">@SHalimoosavi</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© <span id="footer-year"></span> Syed Ali Hasan Moosavi · SAYANJALI NEXUS PRIVATE LIMITED. Released under the MIT License.</p>
+  </div>
+</footer>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is QuickStock Sync?", "acceptedAnswer": { "@type": "Answer", "text": "QuickStock Sync is a free, open-source, offline-first inventory management platform for warehouses, retail stores, and small businesses, built with Node.js and Express, storing data in local JSON files." } },
+    { "@type": "Question", "name": "Is QuickStock Sync open source?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. QuickStock Sync is released under the MIT License and its full source code is available on GitHub." } },
+    { "@type": "Question", "name": "Is QuickStock Sync free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no subscription, paid tier, or feature paywall." } },
+    { "@type": "Question", "name": "Can QuickStock Sync work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is offline-first, installable as a Progressive Web App, and queues stock operations made while offline for automatic sync later." } },
+    { "@type": "Question", "name": "Does it support barcode scanning?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, using the browser's camera-based scanner, with manual entry and USB/Bluetooth barcode scanner support as a fallback." } },
+    { "@type": "Question", "name": "Does it support QR code labels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, every product can generate a printable QR label, individually or in bulk." } },
+    { "@type": "Question", "name": "Does it support CSV import and export?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, with a dry-run preview before any bulk import is applied." } },
+    { "@type": "Question", "name": "Does it support Excel import and export?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Excel (.xlsx) import and export work the same way as CSV." } },
+    { "@type": "Question", "name": "Does it support multiple warehouses or locations?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, stock is tracked per location, with transfers between locations and a full undoable history." } },
+    { "@type": "Question", "name": "Does it support suppliers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, suppliers can be managed and linked to purchase orders." } },
+    { "@type": "Question", "name": "Does it support purchase orders?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, with a draft, ordered, partially received, received, and cancelled workflow." } },
+    { "@type": "Question", "name": "Does it support user authentication?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and it is optional, off by default, with staff and admin roles when enabled." } },
+    { "@type": "Question", "name": "Does it support LAN synchronization?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, two instances on the same local network can sync inventory data with each other." } },
+    { "@type": "Question", "name": "Does it support cloud synchronization?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, using the same peer-to-peer sync feature as LAN sync, since a peer is just a URL." } },
+    { "@type": "Question", "name": "Is QuickStock Sync a Progressive Web App?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it has a web app manifest, icon set, and service worker for installation on desktop or mobile." } },
+    { "@type": "Question", "name": "What technology is QuickStock Sync built with?", "acceptedAnswer": { "@type": "Answer", "text": "Node.js and Express on the backend, vanilla HTML, CSS, and JavaScript on the frontend, with local JSON file storage." } },
+    { "@type": "Question", "name": "Does it require a database like MySQL or MongoDB?", "acceptedAnswer": { "@type": "Answer", "text": "No, it stores data in local JSON files with atomic writes and automatic backups." } },
+    { "@type": "Question", "name": "Can I self-host QuickStock Sync?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, self-hosting is the only way it runs, via npm install and npm start." } },
+    { "@type": "Question", "name": "Who is QuickStock Sync for?", "acceptedAnswer": { "@type": "Answer", "text": "Warehouse teams, retail stores, distributors, independent vendors, and small or growing businesses." } },
+    { "@type": "Question", "name": "Does it support dark mode?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, with a per-browser toggle and a configurable default theme." } },
+    { "@type": "Question", "name": "Does it support undo?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the most recent stock action can be undone with one click, including transfers." } },
+    { "@type": "Question", "name": "What license is QuickStock Sync released under?", "acceptedAnswer": { "@type": "Answer", "text": "The MIT License." } },
+    { "@type": "Question", "name": "Who created QuickStock Sync?", "acceptedAnswer": { "@type": "Answer", "text": "Syed Ali Hasan Moosavi, Founder and Managing Director of SAYANJALI NEXUS PRIVATE LIMITED." } },
+    { "@type": "Question", "name": "Does QuickStock Sync send my data anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No, not unless a sync peer is explicitly configured by the user; by default all data stays local." } }
+  ]
+}
+</script>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
