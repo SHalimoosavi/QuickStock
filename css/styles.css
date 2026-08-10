@@ -40,7 +40,7 @@
 
 /* ---------- Reset & base ---------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
@@ -48,6 +48,8 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text-on-dark);
   font-family: var(--font-body);
@@ -118,8 +120,8 @@ button { font: inherit; cursor: pointer; }
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-dark);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 1.5rem; }
-.brand { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 1.5rem; min-width: 0; }
+.brand { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; min-width: 0; }
 .brand-mark {
   width: 22px; height: 22px;
   background: var(--amber);
@@ -136,11 +138,11 @@ button { font: inherit; cursor: pointer; }
   background: var(--bg);
   top: 4px; left: 4px;
 }
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; white-space: nowrap; }
 .brand-accent { color: var(--amber-bright); }
 
-.main-nav { display: flex; align-items: center; gap: 1.75rem; flex: 1; justify-content: center; }
-.main-nav a { font-size: 0.9rem; color: var(--text-on-dark-soft); transition: color 0.15s var(--ease); }
+.main-nav { display: flex; align-items: center; gap: 1.75rem; flex: 1; justify-content: center; min-width: 0; }
+.main-nav a { font-size: 0.9rem; color: var(--text-on-dark-soft); transition: color 0.15s var(--ease); white-space: nowrap; }
 .main-nav a:hover { color: var(--text-on-dark); }
 
 .header-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
@@ -185,7 +187,8 @@ button { font: inherit; cursor: pointer; }
   pointer-events: none;
   z-index: 0;
 }
-.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; min-width: 0; }
+.hero-copy { min-width: 0; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -203,6 +206,7 @@ button { font: inherit; cursor: pointer; }
 }
 .hero-sub { font-size: 1.08rem; color: var(--text-on-dark-soft); max-width: 46ch; margin-bottom: 2rem; }
 .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.hero-meta { min-width: 0; }
 .hero-meta code {
   display: inline-block; font-size: 0.82rem; color: var(--text-on-dark-soft);
   background: var(--bg-elevated); border: 1px solid var(--line-dark);
@@ -211,7 +215,7 @@ button { font: inherit; cursor: pointer; }
 }
 
 /* ---------- Hero visual: ledger panel ---------- */
-.hero-visual { position: relative; }
+.hero-visual { position: relative; min-width: 0; }
 .ledger-panel {
   background: rgba(20, 23, 15, 0.7);
   border: 1px solid var(--line-dark-strong);
@@ -516,15 +520,20 @@ button { font: inherit; cursor: pointer; }
   .docs-grid { grid-template-columns: repeat(2, 1fr); }
   .docs-card-wide { grid-column: span 2; }
   .mock-grid { grid-template-columns: repeat(2, 1fr); }
-}
 
-@media (max-width: 860px) {
+  /* The full nav's own minimum content width (7 links) plus the brand
+     and header buttons doesn't reliably fit anywhere from ~860–1080px —
+     rather than fine-tune font sizes into a fragile fit, every tablet
+     width gets the same compact header as mobile. */
   .main-nav { display: none; }
   .nav-toggle { display: flex; }
-  .header-star span:not(.star-count) + span { display: none; }
-  .header-star .btn-ghost-text { display: none; }
+  /* The Star/Get-started buttons don't fit next to the hamburger — the
+     mobile nav drawer already has its own "View on GitHub" CTA, so these
+     are simply hidden rather than awkwardly truncated. */
+  .header-star, .header-try { display: none; }
+
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 420px; margin: 0 auto; }
+  .hero-visual { order: -1; max-width: 420px; width: 100%; margin: 0 auto; }
   .contact-grid { grid-template-columns: 1fr; }
   .founder-card { flex-direction: column; text-align: center; }
   .founder-links { justify-content: center; }
@@ -534,7 +543,6 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 640px) {
   .section { padding: 4rem 0; }
   .header-inner { height: 60px; }
-  .header-star span:last-child { display: none; }
   .feature-grid, .feature-checklist, .problem-grid, .why-grid, .arch-grid, .project-grid, .docs-grid, .mock-grid, .mock-stats { grid-template-columns: 1fr; }
   .docs-card-wide { grid-column: span 1; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -545,4 +553,15 @@ button { font: inherit; cursor: pointer; }
   .hero-actions .btn, .docs-cta .btn { width: 100%; }
   .timeline::before { left: 24px; }
   .timeline-v { width: 50px; height: 50px; font-size: 0.7rem; }
+  .floating-chip { font-size: 0.68rem; padding: 0.4rem 0.65rem; }
+  .chip-scan { right: 4%; top: -10px; }
+  .chip-offline { left: 2%; bottom: -8px; }
+}
+
+@media (max-width: 360px) {
+  .wrap { padding: 0 1.1rem; }
+  .hero { padding: 3.5rem 0 4rem; }
+  .ledger-panel { padding: 1rem; }
+  .ledger-rows li { grid-template-columns: auto 1fr auto; gap: 0.5rem; font-size: 0.78rem; }
+  .floating-chip { display: none; }
 }
